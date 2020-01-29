@@ -10,7 +10,7 @@ import {
   IonTabs
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import { apps, flash, send, images } from 'ionicons/icons';
+import { apps, flash, send, images, home } from 'ionicons/icons';
 import Tab1 from './pages/Tab1';
 import Tab2 from './pages/Tab2';
 import Tab3 from './pages/Tab3';
@@ -38,6 +38,7 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
+import { homedir } from 'os';
 
 const App: React.FC = () => (
   <IonApp>
@@ -56,6 +57,10 @@ const App: React.FC = () => (
           {/* <Route path="/" render={() => <Redirect to="/tab1" />} exact={true} /> */}
         </IonRouterOutlet>
         <IonTabBar slot="bottom">
+        <IonTabButton tab="home" href="/home">
+            <IonIcon icon={home} />
+            <IonLabel>Home</IonLabel>
+          </IonTabButton>
           <IonTabButton tab="tab1" href="/tab1">
             <IonIcon icon={flash} />
             <IonLabel>Tab One</IonLabel>

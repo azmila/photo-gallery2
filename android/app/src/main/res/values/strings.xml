@@ -4,4 +4,5 @@
     <string name="title_activity_main">photo-gallery2</string>
     <string name="package_name">io.ionic.starter</string>
     <string name="custom_url_scheme">io.ionic.starter</string>
+    <string name="server_client_id">203731235357-5alqfdg3cg956gplre7pt463rl93b0kr.apps.googleusercontent.com</string>
 </resources>

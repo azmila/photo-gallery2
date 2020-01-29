@@ -1,4 +1,7 @@
-import { IonContent, IonText, IonRow, IonCol, IonHeader, IonPage, IonTitle, IonToolbar, IonButton, IonImg } from '@ionic/react';
+import {
+  IonContent, IonText, IonRow, IonCol, IonHeader, IonPage, IonTitle, IonToolbar,
+  IonButton, IonImg, IonToast
+} from '@ionic/react';
 import React, { Component } from 'react';
 import './Login.css';
 import { Plugins } from '@capacitor/core';
@@ -11,6 +14,7 @@ const INITIAL_STATE = {
 class Login extends Component {
   state: any = {};
   props: any = {};
+  
   constructor(props: any) {
     super(props);
     this.state = { ...INITIAL_STATE };
@@ -18,14 +22,30 @@ class Login extends Component {
 
   async signIn(): Promise<void> {
     const { history } = this.props;
-    const result = await Plugins.GoogleAuth.signIn();
-    console.info('result', result);
-    if (result) {
-      history.push({
-        pathname: '/home',
-        state: { name: result.name || result.displayName, image: result.imageUrl, email: result.email }
-      });
-    }
+
+    try {
+      const result = await Plugins.GoogleAuth.signIn();
+      console.info('result', result);
+      if (result) {
+        history.push({
+          pathname: '/home',
+          state: { name: result.name || result.displayName, image: result.imageUrl, email: result.email }
+        });
+      }
+     } catch (e) {
+       console.log(e);
+    //   <IonToast
+    //     isOpen={true}
+    //     message={e}
+    //     duration={2000}
+    //   />
+     }
+    //added later
+    // else{
+    //   history.push({
+    //     pathname: '/home'
+    //    });
+    // }
 
   }
 
